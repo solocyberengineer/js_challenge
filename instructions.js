@@ -298,16 +298,14 @@ function carTypes(brand, model, year, transmission, drivetrains){
     this.year = year
     this.transmission = transmission
     this.drivetrains = drivetrains
-
-    return this
 }
 
 // 26. Create 4 objects of your own and print to the console all of the created objects.
 
-let car1 = carTypes('honda', 'type r', 2016, '6-speed', '4-wheel-drive')
-let car2 = carTypes('honda', 'type r', 2016, '6-speed', '4-wheel-drive')
-let car3 = carTypes('honda', 'type r', 2016, '6-speed', '4-wheel-drive')
-let car4 = carTypes('honda', 'type r', 2016, '6-speed', '4-wheel-drive')
+let car1 = new carTypes('honda', 'type r', 2016, 'manual', '4-wheel-drive')
+let car2 = new carTypes('ford', 'figo', 2019, 'manual', 'front-wheel-drive')
+let car3 = new carTypes('ford fiesta', '1.0 EcoBoost', 2015, 'manual', 'front-wheel-drive')
+let car4 = new carTypes('nissan', 'skyline R34', 1985, 'manual', '4-wheel-drive')
 
 console.log(car1)
 console.log(car2)
@@ -315,9 +313,69 @@ console.log(car3)
 console.log(car4)
 
 // 27. After, push the 4 objects to an array called 'informationAboutCars'.
+
+let informationAboutCars = [
+    car1,
+    car2,
+    car3,
+    car4
+];
+
+console.log(informationAboutCars)
+
 // 28. Create a function that can be used 'globally', the function should return a sentence containing all the properties used inside the object, eg 'The car brand Ford has a model of a Figo that was produced in 2019. It is a manual and is a front wheel drive'
+
+function parseCarBrand(car){
+    console.log(car.brand)
+    return `The car brand is ${car.brand} and its model is ${car.model}. It was produced in ${car.year}. It is a ${car.transmission} and is a ${car.drivetrains}`
+}
+
+console.log(parseCarBrand(car1))
+
 // 29. Make sure to write the above sentences for each car inside the corresponding h4 elements
+
+let dataCar1 = document.querySelector('[data-car1]')
+let dataCar2 = document.querySelector('[data-car2]')
+let dataCar3 = document.querySelector('[data-car3]')
+let dataCar4 = document.querySelector('[data-car4]')
+
+informationAboutCars.forEach( (car) => {
+    console.log(car)
+} )
+
 // 30. Use the array in question10 that you created and create a conditional statement that check if 'BMW' appears in the array. The console should return 'This item does appear in the array' or 'The item does not appear in the array'
+
+if( coolCars.includes('BMW') ){
+    console.log('This item does appear in the array')
+} else {
+    console.log('The item does not appear in the array')
+}
+
 // 31. Declare an array and give it a value of [5, 18, 14, 16, 2, 1].
 //     Create a program that returns the middle value of the current array, if array length is even return 2 numbers, if the array lengthis odd return 1 number
+
+let numbers = [5, 18, 14, 16, 2, 1];
+
+function findMiddleArrayValue(arr){
+    if( arr.length % 2 == 0 ){
+        return [arr[(arr.length/2)-1], arr[arr.length/2]]
+    } else {
+        let midIndex = parseInt(arr.length/2)
+        return [ arr[midIndex] ]
+    }
+}
+
+console.log( findMiddleArrayValue(numbers) )
+
 // 32. Go back to Question 16 and use the conditional statement you created. The age has to be requested from the user and the message ust be written to the html page in the corresponding element
+
+a = parseInt( prompt('What is your age') )
+let ques32 = document.getElementById('Ques32')
+
+if( a < age ){
+    ques32.textContent = `younger than ${age}`
+} else if( a > age ){
+    ques32.textContent = `older than ${age}`
+} else {
+    ques32.textContent = `is ${age}`
+}
